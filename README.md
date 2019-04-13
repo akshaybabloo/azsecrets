@@ -10,7 +10,7 @@ pip install azsecrets
 
 ## Usage
 
-See [https://akshaybabloo.github.io/azsecrets/](https://akshaybabloo.github.io/azsecrets/)
+See [https://akshaybabloo.github.io/azure-keyvault-secret-env/](https://akshaybabloo.github.io/azure-keyvault-secret-env/)
 
 ## Contributions
 
