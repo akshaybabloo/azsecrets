@@ -95,27 +95,27 @@ class AzureSecrets:
         Prints environment variable for PowerShell
         """
         for key, value in self.get_secrets().items():
-            print(f"$Env:{key}={value}")
+            print("$Env:{0}={1}".format(key, value))
         print("# Run this command to configure your shell:")
-        print("# & python azure_env.py env --shell powershell | Invoke-Expression")
+        print("# & secrets env --shell powershell | Invoke-Expression")
 
     def env_cmd(self):
         """
         Prints environment variable for CMD
         """
         for key, value in self.get_secrets().items():
-            print(f"SET {key}={value}")
+            print("SET {0}={1}".format(key, value))
         print("REM Run this command to configure your shell:")
-        print("REM @FOR /f \"tokens=*\" %i IN ('python azure_env.py env --shell cmd') DO @%i")
+        print("REM @FOR /f \"tokens=*\" %i IN ('secrets env --shell cmd') DO @%i")
 
     def env_bash(self):
         """
         Prints environment variable for Bash
         """
         for key, value in self.get_secrets().items():
-            print(f"export {key}={value}")
+            print("export {0}={1}".format(key, value))
         print("# Run this command to configure your shell:")
-        print("# eval $(python azure_env.py env --shell bash)")
+        print("# eval $(secrets env --shell bash)")
 
 
 def _auth_callback(server, resource, scope):
