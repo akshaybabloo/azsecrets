@@ -37,6 +37,8 @@ You can now use comma separated names as input, instead of getting all the keys.
 
     secrets env --shell bash --secret-names SECRET-1,SECRET-2
 
+.. versionadded:: 1.0.1
+
 Arguments and Commands
 ----------------------
 
