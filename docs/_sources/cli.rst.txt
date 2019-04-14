@@ -26,8 +26,26 @@ or provide them via the CLI arguments
 
 .. code-block::
 
-    > secrets --help
+    secrets --vault-base-url *** --client-id *** --secret *** --tenant *** env --shell bash
 
+Comma Separated Names
+---------------------
+
+You can now use comma separated names as input, instead of getting all the keys. To do this type in:
+
+.. code-block::
+
+    secrets env --shell bash --secret-names SECRET-1,SECRET-2
+
+Arguments and Commands
+----------------------
+
+For more information, type in ``secrets --help`` or ``secrets env --help``.
+
+.. code-block::
+    :caption: secrets --help
+
+    > secrets --help
     Usage: secrets [OPTIONS] COMMAND [ARGS]...
 
     Options:
@@ -39,4 +57,17 @@ or provide them via the CLI arguments
       --help                 Show this message and exit.
 
     Commands:
-      env                   Environment configuration: [powershell, cmd or bash].
+      env                    Environment configuration: [powershell, cmd or bash].
+
+.. code-block::
+    :caption: secrets env --help
+
+    Usage: secrets env [OPTIONS]
+
+    Environment configuration: [powershell, cmd or bash].
+
+    Options:
+      --shell [powershell|cmd|bash]
+      --secret-names TEXT            A comma separated names of the secret to use
+                                     (without space): NAME-1,NAME-2
+      --help                         Show this message and exit.

@@ -57,8 +57,23 @@
 </pre></div>
 </div>
 <p>or provide them via the CLI arguments</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">secrets</span> <span class="o">--</span><span class="n">vault</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">url</span> <span class="o">***</span> <span class="o">--</span><span class="n">client</span><span class="o">-</span><span class="nb">id</span> <span class="o">***</span> <span class="o">--</span><span class="n">secret</span> <span class="o">***</span> <span class="o">--</span><span class="n">tenant</span> <span class="o">***</span> <span class="n">env</span> <span class="o">--</span><span class="n">shell</span> <span class="n">bash</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comma-separated-names">
+<h2>Comma Separated Names<a class="headerlink" href="#comma-separated-names" title="Permalink to this headline">¶</a></h2>
+<p>You can now use comma separated names as input, instead of getting all the keys. To do this type in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">secrets</span> <span class="n">env</span> <span class="o">--</span><span class="n">shell</span> <span class="n">bash</span> <span class="o">--</span><span class="n">secret</span><span class="o">-</span><span class="n">names</span> <span class="n">SECRET</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">SECRET</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments-and-commands">
+<h2>Arguments and Commands<a class="headerlink" href="#arguments-and-commands" title="Permalink to this headline">¶</a></h2>
+<p>For more information, type in <code class="docutils literal notranslate"><span class="pre">secrets</span> <span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">secrets</span> <span class="pre">env</span> <span class="pre">--help</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">secrets –help</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">secrets</span> <span class="o">--</span><span class="n">help</span>
-
 <span class="n">Usage</span><span class="p">:</span> <span class="n">secrets</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">COMMAND</span> <span class="p">[</span><span class="n">ARGS</span><span class="p">]</span><span class="o">...</span>
 
 <span class="n">Options</span><span class="p">:</span>
@@ -70,8 +85,23 @@
   <span class="o">--</span><span class="n">help</span>                 <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
 
 <span class="n">Commands</span><span class="p">:</span>
-  <span class="n">env</span>                   <span class="n">Environment</span> <span class="n">configuration</span><span class="p">:</span> <span class="p">[</span><span class="n">powershell</span><span class="p">,</span> <span class="n">cmd</span> <span class="ow">or</span> <span class="n">bash</span><span class="p">]</span><span class="o">.</span>
+  <span class="n">env</span>                    <span class="n">Environment</span> <span class="n">configuration</span><span class="p">:</span> <span class="p">[</span><span class="n">powershell</span><span class="p">,</span> <span class="n">cmd</span> <span class="ow">or</span> <span class="n">bash</span><span class="p">]</span><span class="o">.</span>
 </pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">secrets env –help</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">secrets</span> <span class="n">env</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
+
+<span class="n">Environment</span> <span class="n">configuration</span><span class="p">:</span> <span class="p">[</span><span class="n">powershell</span><span class="p">,</span> <span class="n">cmd</span> <span class="ow">or</span> <span class="n">bash</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">Options</span><span class="p">:</span>
+  <span class="o">--</span><span class="n">shell</span> <span class="p">[</span><span class="n">powershell</span><span class="o">|</span><span class="n">cmd</span><span class="o">|</span><span class="n">bash</span><span class="p">]</span>
+  <span class="o">--</span><span class="n">secret</span><span class="o">-</span><span class="n">names</span> <span class="n">TEXT</span>            <span class="n">A</span> <span class="n">comma</span> <span class="n">separated</span> <span class="n">names</span> <span class="n">of</span> <span class="n">the</span> <span class="n">secret</span> <span class="n">to</span> <span class="n">use</span>
+                                 <span class="p">(</span><span class="n">without</span> <span class="n">space</span><span class="p">):</span> <span class="n">NAME</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">NAME</span><span class="o">-</span><span class="mi">2</span>
+  <span class="o">--</span><span class="n">help</span>                         <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -86,6 +116,8 @@
   <ul>
 <li><a class="reference internal" href="#">As a Command Line Interface</a><ul>
 <li><a class="reference internal" href="#setting-up-shell-before-using-secrets">Setting up Shell before using Secrets</a></li>
+<li><a class="reference internal" href="#comma-separated-names">Comma Separated Names</a></li>
+<li><a class="reference internal" href="#arguments-and-commands">Arguments and Commands</a></li>
 </ul>
 </li>
 </ul>

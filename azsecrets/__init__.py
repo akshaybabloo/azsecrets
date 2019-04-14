@@ -158,17 +158,23 @@ def cli(ctx, vault_base_url, client_id, secret, tenant):
 
 @cli.command(help="Environment configuration: [powershell, cmd or bash].")
 @click.option('--shell', type=click.Choice(['powershell', 'cmd', 'bash']))
+@click.option('--secret-names',
+              help="A comma separated names of the secret to use (without space): NAME-1,NAME-2",
+              default=None)
 @click.pass_context
-def env(ctx, shell):
+def env(ctx, shell, secret_names):
+    if secret_names is not None:
+        secret_names = [name.strip() for name in secret_names.split(',')]
+
     if shell == 'powershell':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant']).env_powershell()
+                     ctx.obj['tenant'], secret_names).env_powershell()
     elif shell == 'cmd':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant']).env_cmd()
+                     ctx.obj['tenant'], secret_names).env_cmd()
     elif shell == 'bash':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant']).env_bash()
+                     ctx.obj['tenant'], secret_names).env_bash()
 
 
 def main():
