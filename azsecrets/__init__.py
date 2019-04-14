@@ -6,7 +6,7 @@ from azure.common.credentials import ServicePrincipalCredentials
 from azure.keyvault import KeyVaultClient, KeyVaultAuthentication
 from azure.keyvault.v7_0.models import KeyVaultErrorException
 
-__version__ = '1.0'
+__version__ = '1.0.1'
 
 
 class AzureSecrets:
