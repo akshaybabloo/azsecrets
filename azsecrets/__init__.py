@@ -120,8 +120,8 @@ class AzureSecrets:
 
 def _auth_callback(server, resource, scope):
     credentials = ServicePrincipalCredentials(
-        client_id=os.environ['AZURE_CLIENT'],
-        secret=os.environ['AZURE_KEY'],
+        client_id=os.environ['AZURE_CLIENT_ID'],
+        secret=os.environ['AZURE_SECRET_KEY'],
         tenant=os.environ['AZURE_TENANT_ID'],
         resource=resource
     )
