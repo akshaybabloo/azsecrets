@@ -4,6 +4,7 @@ import sys
 import click
 from azure.common.credentials import ServicePrincipalCredentials
 from azure.keyvault import KeyVaultClient, KeyVaultAuthentication
+from azure.keyvault.v7_0.models import KeyVaultErrorException
 
 __version__ = '1.0'
 
@@ -79,13 +80,17 @@ class AzureSecrets:
 
         key_bundle = self.client.get_secrets(self.vault_base_url)
 
-        if self.env_names is None or env_names is None:
-            for secret_id in key_bundle:
-                _secret_id = secret_id.as_dict()['id'].split('/').pop()
-                secrets.update({_secret_id: self.get_secret(secret_name=_secret_id)})
-        else:
-            for secret_name in self.env_names:
-                secrets.update({secret_name: self.get_secret(secret_name=secret_name)})
+        try:
+            if self.env_names is None and env_names is None:
+                for secret_id in key_bundle:
+                    _secret_id = secret_id.as_dict()['id'].split('/').pop()
+                    secrets.update({_secret_id: self.get_secret(secret_name=_secret_id)})
+            else:
+                for secret_name in self.env_names:
+                    secrets.update({secret_name: self.get_secret(secret_name=secret_name)})
+        except KeyVaultErrorException as e:
+            print("Error:", e)
+            sys.exit(1)
 
         return secrets
 
