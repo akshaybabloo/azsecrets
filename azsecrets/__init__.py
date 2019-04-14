@@ -1,7 +1,7 @@
 import os
+import sys
 
 import click
-import sys
 from azure.common.credentials import ServicePrincipalCredentials
 from azure.keyvault import KeyVaultClient, KeyVaultAuthentication
 
@@ -14,8 +14,7 @@ class AzureSecrets:
     """
 
     def __init__(self, vault_base_url: str = None, client_id: str = None, secret: str = None,
-                 tenant: str = None,
-                 env_names: list = None):
+                 tenant: str = None, env_names: list = None):
 
         self.vault_base_url = vault_base_url
         self.client_id = client_id
