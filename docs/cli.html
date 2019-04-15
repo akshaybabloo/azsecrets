@@ -47,24 +47,35 @@
 <li><p>CMD - <code class="docutils literal notranslate"><span class="pre">secrets</span> <span class="pre">env</span> <span class="pre">--shell</span> <span class="pre">cmd</span></code></p></li>
 <li><p>Bash - <code class="docutils literal notranslate"><span class="pre">secrets</span> <span class="pre">env</span> <span class="pre">--shell</span> <span class="pre">bash</span></code></p></li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>PowerShell does not take <code class="docutils literal notranslate"><span class="pre">-</span></code> as environment names, and Azure Key Vault does not consider <code class="docutils literal notranslate"><span class="pre">-</span></code> as a correct character. When using PowerShell
+<code class="docutils literal notranslate"><span class="pre">-</span></code> is converted to <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.2.</span></p>
+</div>
+</div>
 <div class="section" id="setting-up-shell-before-using-secrets">
 <h2>Setting up Shell before using Secrets<a class="headerlink" href="#setting-up-shell-before-using-secrets" title="Permalink to this headline">¶</a></h2>
 <p>There are two ways to give in the Azure KeyVault credentials, either set environment variables for:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AZURE_VAULT_BASE_URL</span><span class="o">=***</span>
-<span class="n">AZURE_CLIENT_ID</span><span class="o">=***</span>
-<span class="n">AZURE_SECRET_KEY</span><span class="o">=***</span>
-<span class="n">AZURE_TENANT_ID</span><span class="o">=***</span>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">For bash terminal</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">AZURE_VAULT_BASE_URL</span><span class="o">=</span>***
+<span class="nb">export</span> <span class="nv">AZURE_CLIENT_ID</span><span class="o">=</span>***
+<span class="nb">export</span> <span class="nv">AZURE_SECRET_KEY</span><span class="o">=</span>***
+<span class="nb">export</span> <span class="nv">AZURE_TENANT_ID</span><span class="o">=</span>***
 </pre></div>
 </div>
+</div>
 <p>or provide them via the CLI arguments</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">secrets</span> <span class="o">--</span><span class="n">vault</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">url</span> <span class="o">***</span> <span class="o">--</span><span class="n">client</span><span class="o">-</span><span class="nb">id</span> <span class="o">***</span> <span class="o">--</span><span class="n">secret</span> <span class="o">***</span> <span class="o">--</span><span class="n">tenant</span> <span class="o">***</span> <span class="n">env</span> <span class="o">--</span><span class="n">shell</span> <span class="n">bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>secrets --vault-base-url *** --client-id *** --secret *** --tenant *** env --shell bash
 </pre></div>
 </div>
 </div>
 <div class="section" id="comma-separated-names">
 <h2>Comma Separated Names<a class="headerlink" href="#comma-separated-names" title="Permalink to this headline">¶</a></h2>
 <p>You can now use comma separated names as input, instead of getting all the keys. To do this type in:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">secrets</span> <span class="n">env</span> <span class="o">--</span><span class="n">shell</span> <span class="n">bash</span> <span class="o">--</span><span class="n">secret</span><span class="o">-</span><span class="n">names</span> <span class="n">SECRET</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">SECRET</span><span class="o">-</span><span class="mi">2</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>secrets env --shell bash --secret-names SECRET-1,SECRET-2
 </pre></div>
 </div>
 <div class="versionadded">
@@ -74,8 +85,8 @@
 <div class="section" id="arguments-and-commands">
 <h2>Arguments and Commands<a class="headerlink" href="#arguments-and-commands" title="Permalink to this headline">¶</a></h2>
 <p>For more information, type in <code class="docutils literal notranslate"><span class="pre">secrets</span> <span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">secrets</span> <span class="pre">env</span> <span class="pre">--help</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">secrets –help</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">secrets –help</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">secrets</span> <span class="o">--</span><span class="n">help</span>
 <span class="n">Usage</span><span class="p">:</span> <span class="n">secrets</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">COMMAND</span> <span class="p">[</span><span class="n">ARGS</span><span class="p">]</span><span class="o">...</span>
 
@@ -92,8 +103,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">secrets env –help</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">secrets env –help</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">secrets</span> <span class="n">env</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
 
 <span class="n">Environment</span> <span class="n">configuration</span><span class="p">:</span> <span class="p">[</span><span class="n">powershell</span><span class="p">,</span> <span class="n">cmd</span> <span class="ow">or</span> <span class="n">bash</span><span class="p">]</span><span class="o">.</span>

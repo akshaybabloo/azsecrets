@@ -9,22 +9,29 @@ It supports three shell types:
 2. CMD - ``secrets env --shell cmd``
 3. Bash - ``secrets env --shell bash``
 
+.. warning::
+
+    PowerShell does not take ``-`` as environment names, and Azure Key Vault does not consider ``-`` as a correct character. When using PowerShell
+    ``-`` is converted to ``_``.
+
+    .. versionadded:: 1.0.2
 
 Setting up Shell before using Secrets
 -------------------------------------
 
 There are two ways to give in the Azure KeyVault credentials, either set environment variables for:
 
-.. code-block::
+.. code-block:: bash
+    :caption: For bash terminal
 
-    AZURE_VAULT_BASE_URL=***
-    AZURE_CLIENT_ID=***
-    AZURE_SECRET_KEY=***
-    AZURE_TENANT_ID=***
+    export AZURE_VAULT_BASE_URL=***
+    export AZURE_CLIENT_ID=***
+    export AZURE_SECRET_KEY=***
+    export AZURE_TENANT_ID=***
 
 or provide them via the CLI arguments
 
-.. code-block::
+.. code-block:: bash
 
     secrets --vault-base-url *** --client-id *** --secret *** --tenant *** env --shell bash
 
@@ -33,7 +40,7 @@ Comma Separated Names
 
 You can now use comma separated names as input, instead of getting all the keys. To do this type in:
 
-.. code-block::
+.. code-block:: bash
 
     secrets env --shell bash --secret-names SECRET-1,SECRET-2
 
