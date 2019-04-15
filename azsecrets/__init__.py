@@ -15,13 +15,12 @@ class AzureSecrets:
     """
 
     def __init__(self, vault_base_url: str = None, client_id: str = None, secret: str = None,
-                 tenant: str = None, env_names: list = None):
+                 tenant: str = None):
 
         self.vault_base_url = vault_base_url
         self.client_id = client_id
         self.secret = secret
         self.tenant = tenant
-        self.env_names = env_names
 
         try:
             if self.vault_base_url is None:
@@ -81,12 +80,12 @@ class AzureSecrets:
         key_bundle = self.client.get_secrets(self.vault_base_url)
 
         try:
-            if self.env_names is None and env_names is None:
+            if env_names is None:
                 for secret_id in key_bundle:
                     _secret_id = secret_id.as_dict()['id'].split('/').pop()
                     secrets.update({_secret_id: self.get_secret(secret_name=_secret_id)})
             else:
-                for secret_name in self.env_names:
+                for secret_name in env_names:
                     secrets.update({secret_name: self.get_secret(secret_name=secret_name)})
         except KeyVaultErrorException as e:
             print("Error:", e)
@@ -94,29 +93,29 @@ class AzureSecrets:
 
         return secrets
 
-    def env_powershell(self):
+    def env_powershell(self, secret_names: list = None):
         """
         Prints environment variable for PowerShell
         """
-        for key, value in self.get_secrets().items():
+        for key, value in self.get_secrets(secret_names).items():
             print("$Env:{0}={1}".format(key.replace('-', "_"), value))
         print("# Run this command to configure your shell:")
         print("# & secrets env --shell powershell | Invoke-Expression")
 
-    def env_cmd(self):
+    def env_cmd(self, secret_names: list = None):
         """
         Prints environment variable for CMD
         """
-        for key, value in self.get_secrets().items():
+        for key, value in self.get_secrets(secret_names).items():
             print("SET {0}={1}".format(key, value))
         print("REM Run this command to configure your shell:")
         print("REM @FOR /f \"tokens=*\" %i IN ('secrets env --shell cmd') DO @%i")
 
-    def env_bash(self):
+    def env_bash(self, secret_names: list = None):
         """
         Prints environment variable for Bash
         """
-        for key, value in self.get_secrets().items():
+        for key, value in self.get_secrets(secret_names).items():
             print("export {0}={1}".format(key, value))
         print("# Run this command to configure your shell:")
         print("# eval $(secrets env --shell bash)")
@@ -168,13 +167,13 @@ def env(ctx, shell, secret_names):
 
     if shell == 'powershell':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant'], secret_names).env_powershell()
+                     ctx.obj['tenant']).env_powershell(secret_names)
     elif shell == 'cmd':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant'], secret_names).env_cmd()
+                     ctx.obj['tenant']).env_cmd(secret_names)
     elif shell == 'bash':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant'], secret_names).env_bash()
+                     ctx.obj['tenant']).env_bash(secret_names)
 
 
 def main():

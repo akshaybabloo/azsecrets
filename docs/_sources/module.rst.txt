@@ -28,7 +28,22 @@ You can get a single secret with the following example:
 Get All Secrets
 ---------------
 
-You can get all the secrets present in your Azure KeyVault by doing:
+.. code-block:: python
+
+    from azsecrets import AzureSecrets
+
+    secrets = AzureSecrets('https://', 'client id', 'secret key', 'tenant id')
+    print(secrets.get_secret())
+    # {
+    #     'secret-name-1' : 'secret-value-1',
+    #     'secret-name-2': 'secret-value-2'
+    #      ...
+    # }
+
+Get Specific Set of Secretes
+----------------------------
+
+You can also get a specific set of secrets present in your Azure KeyVault by doing:
 
 .. code-block:: python
 
