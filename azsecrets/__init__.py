@@ -99,7 +99,7 @@ class AzureSecrets:
         Prints environment variable for PowerShell
         """
         for key, value in self.get_secrets().items():
-            print("$Env:{0}={1}".format(key, value))
+            print("$Env:{0}={1}".format(key.replace('-', "_"), value))
         print("# Run this command to configure your shell:")
         print("# & secrets env --shell powershell | Invoke-Expression")
 
