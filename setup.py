@@ -17,7 +17,7 @@ setup(
     version=__version__,
     install_requires=get_requirements('requirements.txt'),
     packages=['azsecrets'],
-    url='https://github.com/akshaybabloo/azure-keyvault-secret-env',
+    url='https://github.com/akshaybabloo/azsecrets',
     license='MIT',
     author='Akshay Raj Gollahalli',
     author_email='akshay@gollahalli.com',
