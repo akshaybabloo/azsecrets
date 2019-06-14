@@ -107,7 +107,7 @@ class AzureSecrets:
         Prints environment variable for CMD
         """
         for key, value in self.get_secrets(secret_names).items():
-            print("SET {0}={1}".format(key, value))
+            print("SET {0}={1}".format(key.replace('-', "_"), value))
         print("REM Run this command to configure your shell:")
         print("REM @FOR /f \"tokens=*\" %i IN ('secrets env --shell cmd') DO @%i")
 
@@ -116,7 +116,7 @@ class AzureSecrets:
         Prints environment variable for Bash
         """
         for key, value in self.get_secrets(secret_names).items():
-            print("export {0}={1}".format(key, value))
+            print("export {0}={1}".format(key.replace('-', "_"), value))
         print("# Run this command to configure your shell:")
         print("# eval $(secrets env --shell bash)")
 
