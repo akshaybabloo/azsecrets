@@ -6,7 +6,7 @@ from azure.common.credentials import ServicePrincipalCredentials
 from azure.keyvault import KeyVaultClient, KeyVaultAuthentication
 from azure.keyvault.v7_0.models import KeyVaultErrorException
 
-__version__ = '1.0.3'
+__version__ = '1.1'
 
 
 class AzureSecrets:
@@ -69,7 +69,7 @@ class AzureSecrets:
         :return: Dictionary of secrets.
 
         >>> secrets = AzureSecrets('https://', 'client id', 'secret key', 'tenant id')
-        >>> print(secrets.get_secret(['secret-name-1', 'secret-name-2']))
+        >>> print(secrets.get_secrets(['secret-name-1', 'secret-name-2']))
         {
             'secret-name-1' : 'secret-value-1',
             'secret-name-2': 'secret-value-2'
