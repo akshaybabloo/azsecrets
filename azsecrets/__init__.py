@@ -93,7 +93,7 @@ class AzureSecrets:
 
         return secrets
 
-    def env_powershell(self, secret_names: list = None):
+    def env_powershell(self, secret_names: list = None, except_names: list = None):
         """
         Prints environment variable for PowerShell
         """
@@ -102,7 +102,7 @@ class AzureSecrets:
         print("# Run this command to configure your shell:")
         print("# & secrets env --shell powershell | Invoke-Expression")
 
-    def env_cmd(self, secret_names: list = None):
+    def env_cmd(self, secret_names: list = None, except_names: list = None):
         """
         Prints environment variable for CMD
         """
@@ -111,7 +111,7 @@ class AzureSecrets:
         print("REM Run this command to configure your shell:")
         print("REM @FOR /f \"tokens=*\" %i IN ('secrets env --shell cmd') DO @%i")
 
-    def env_bash(self, secret_names: list = None):
+    def env_bash(self, secret_names: list = None, except_names: list = None):
         """
         Prints environment variable for Bash
         """
@@ -160,20 +160,25 @@ def cli(ctx, vault_base_url, client_id, secret, tenant):
 @click.option('--secret-names',
               help="A comma separated names of the secret to use (without space): NAME-1,NAME-2",
               default=None)
+@click.option('--except', 'except_names',
+              help="A comma separated names of the secret to ignore (without space): NAME-1,NAME-2",
+              default=None)
 @click.pass_context
-def env(ctx, shell, secret_names):
+def env(ctx, shell, secret_names, except_names):
     if secret_names is not None:
         secret_names = [name.strip() for name in secret_names.split(',')]
+    if except_names is not None:
+        except_names = [excepts.strip() for excepts in except_names.split(',')]
 
     if shell == 'powershell':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant']).env_powershell(secret_names)
+                     ctx.obj['tenant']).env_powershell(secret_names, except_names)
     elif shell == 'cmd':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant']).env_cmd(secret_names)
+                     ctx.obj['tenant']).env_cmd(secret_names, except_names)
     elif shell == 'bash':
         AzureSecrets(ctx.obj['vault_base_url'], ctx.obj['client_id'], ctx.obj['secret'],
-                     ctx.obj['tenant']).env_bash(secret_names)
+                     ctx.obj['tenant']).env_bash(secret_names, except_names)
 
 
 def main():
