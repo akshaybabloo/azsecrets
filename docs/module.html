@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>As a Module &#8212; Secrets 1.1 documentation</title>
+    <title>As a Module &#8212; Secrets 2.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -25,7 +25,7 @@
         <li class="right" >
           <a href="cli.html" title="As a Command Line Interface"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Secrets 1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Secrets 2.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -50,7 +50,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">azsecrets</span> <span class="kn">import</span> <span class="n">AzureSecrets</span>
 
 <span class="n">secrets</span> <span class="o">=</span> <span class="n">AzureSecrets</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;client id&#39;</span><span class="p">,</span> <span class="s1">&#39;secret key&#39;</span><span class="p">,</span> <span class="s1">&#39;tenant id&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s1">&#39;secret-name&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s1">&#39;secret-name&#39;</span><span class="p">))</span>
 <span class="c1"># secret-value</span>
 </pre></div>
 </div>
@@ -60,7 +60,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">azsecrets</span> <span class="kn">import</span> <span class="n">AzureSecrets</span>
 
 <span class="n">secrets</span> <span class="o">=</span> <span class="n">AzureSecrets</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;client id&#39;</span><span class="p">,</span> <span class="s1">&#39;secret key&#39;</span><span class="p">,</span> <span class="s1">&#39;tenant id&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secret</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secret</span><span class="p">())</span>
 <span class="c1"># {</span>
 <span class="c1">#     &#39;secret-name-1&#39; : &#39;secret-value-1&#39;,</span>
 <span class="c1">#     &#39;secret-name-2&#39;: &#39;secret-value-2&#39;</span>
@@ -75,7 +75,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">azsecrets</span> <span class="kn">import</span> <span class="n">AzureSecrets</span>
 
 <span class="n">secrets</span> <span class="o">=</span> <span class="n">AzureSecrets</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;client id&#39;</span><span class="p">,</span> <span class="s1">&#39;secret key&#39;</span><span class="p">,</span> <span class="s1">&#39;tenant id&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secret</span><span class="p">([</span><span class="s1">&#39;secret-name-1&#39;</span><span class="p">,</span> <span class="s1">&#39;secret-name-2&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secret</span><span class="p">([</span><span class="s1">&#39;secret-name-1&#39;</span><span class="p">,</span> <span class="s1">&#39;secret-name-2&#39;</span><span class="p">]))</span>
 <span class="c1"># {</span>
 <span class="c1">#     &#39;secret-name-1&#39; : &#39;secret-value-1&#39;,</span>
 <span class="c1">#     &#39;secret-name-2&#39;: &#39;secret-value-2&#39;</span>
@@ -87,29 +87,29 @@
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="azsecrets.AzureSecrets">
-<em class="property">class </em><code class="descclassname">azsecrets.</code><code class="descname">AzureSecrets</code><span class="sig-paren">(</span><em>vault_base_url: str = None</em>, <em>client_id: str = None</em>, <em>secret: str = None</em>, <em>tenant: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">azsecrets.</code><code class="sig-name descname">AzureSecrets</code><span class="sig-paren">(</span><em class="sig-param">vault_base_url: str = None</em>, <em class="sig-param">client_id: str = None</em>, <em class="sig-param">secret: str = None</em>, <em class="sig-param">tenant: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Azure secrets object that can be used for CLI and as a module.</p>
 <dl class="method">
 <dt id="azsecrets.AzureSecrets.env_bash">
-<code class="descname">env_bash</code><span class="sig-paren">(</span><em>secret_names: list = None</em>, <em>except_names: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.env_bash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.env_bash" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">env_bash</code><span class="sig-paren">(</span><em class="sig-param">secret_names: list = None</em>, <em class="sig-param">except_names: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.env_bash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.env_bash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints environment variable for Bash</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="azsecrets.AzureSecrets.env_cmd">
-<code class="descname">env_cmd</code><span class="sig-paren">(</span><em>secret_names: list = None</em>, <em>except_names: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.env_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.env_cmd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">env_cmd</code><span class="sig-paren">(</span><em class="sig-param">secret_names: list = None</em>, <em class="sig-param">except_names: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.env_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.env_cmd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints environment variable for CMD</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="azsecrets.AzureSecrets.env_powershell">
-<code class="descname">env_powershell</code><span class="sig-paren">(</span><em>secret_names: list = None</em>, <em>except_names: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.env_powershell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.env_powershell" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">env_powershell</code><span class="sig-paren">(</span><em class="sig-param">secret_names: list = None</em>, <em class="sig-param">except_names: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.env_powershell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.env_powershell" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints environment variable for PowerShell</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="azsecrets.AzureSecrets.get_secret">
-<code class="descname">get_secret</code><span class="sig-paren">(</span><em>secret_name: str</em>, <em>secret_version: str = None</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.get_secret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.get_secret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_secret</code><span class="sig-paren">(</span><em class="sig-param">secret_name: str</em>, <em class="sig-param">secret_version: str = None</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.get_secret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.get_secret" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the value for the secret key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -125,7 +125,7 @@
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">secrets</span> <span class="o">=</span> <span class="n">AzureSecrets</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;client id&#39;</span><span class="p">,</span> <span class="s1">&#39;secret key&#39;</span><span class="p">,</span> <span class="s1">&#39;tenant id&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">secrets</span> <span class="o">=</span> <span class="n">AzureSecrets</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;client id&#39;</span><span class="p">,</span> <span class="s1">&#39;secret key&#39;</span><span class="p">,</span> <span class="s1">&#39;tenant id&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s1">&#39;secret-name&#39;</span><span class="p">))</span>
 <span class="go">secret-value</span>
 </pre></div>
@@ -134,7 +134,7 @@
 
 <dl class="method">
 <dt id="azsecrets.AzureSecrets.get_secrets">
-<code class="descname">get_secrets</code><span class="sig-paren">(</span><em>env_names: list = None</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.get_secrets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.get_secrets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_secrets</code><span class="sig-paren">(</span><em class="sig-param">env_names: list = None</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/azsecrets.html#AzureSecrets.get_secrets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#azsecrets.AzureSecrets.get_secrets" title="Permalink to this definition">¶</a></dt>
 <dd><p>A dictionary of secret name and it’s value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -147,7 +147,7 @@
 <dd class="field-odd"><p>Dictionary of secrets.</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">secrets</span> <span class="o">=</span> <span class="n">AzureSecrets</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;client id&#39;</span><span class="p">,</span> <span class="s1">&#39;secret key&#39;</span><span class="p">,</span> <span class="s1">&#39;tenant id&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">secrets</span> <span class="o">=</span> <span class="n">AzureSecrets</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;client id&#39;</span><span class="p">,</span> <span class="s1">&#39;secret key&#39;</span><span class="p">,</span> <span class="s1">&#39;tenant id&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">get_secrets</span><span class="p">([</span><span class="s1">&#39;secret-name-1&#39;</span><span class="p">,</span> <span class="s1">&#39;secret-name-2&#39;</span><span class="p">]))</span>
 <span class="go">{</span>
 <span class="go">    &#39;secret-name-1&#39; : &#39;secret-value-1&#39;,</span>
@@ -190,10 +190,10 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -212,12 +212,12 @@
         <li class="right" >
           <a href="cli.html" title="As a Command Line Interface"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Secrets 1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Secrets 2.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Akshay Raj Gollahalli.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
     </div>
   </body>
 </html>

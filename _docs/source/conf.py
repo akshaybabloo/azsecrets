@@ -22,7 +22,7 @@ copyright = '2019, Akshay Raj Gollahalli'
 author = 'Akshay Raj Gollahalli'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1'
+release = '2.0'
 
 
 # -- General configuration ---------------------------------------------------
