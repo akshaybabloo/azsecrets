@@ -2,9 +2,9 @@ import os
 import sys
 
 import click
-from azure.common.credentials import ServicePrincipalCredentials
-from azure.keyvault import KeyVaultClient, KeyVaultAuthentication
-from azure.keyvault.v7_0.models import KeyVaultErrorException
+from azure.identity import ClientSecretCredential
+from azure.keyvault.secrets import SecretClient
+from azure.keyvault.secrets._shared._generated.v7_0.models import KeyVaultErrorException
 
 __version__ = '1.1'
 
@@ -35,7 +35,11 @@ class AzureSecrets:
             print("Did you forget to set the environment variable?", e)
             sys.exit(1)
 
-        self.client = KeyVaultClient(KeyVaultAuthentication(_auth_callback))
+        self.client = SecretClient(vault_url=self.vault_base_url, credential=ClientSecretCredential(
+            client_id=self.client_id,
+            client_secret=self.secret,
+            tenant_id=self.tenant,
+        ))
 
     def get_secret(self, secret_name: str, secret_version: str = None) -> str:
         """
@@ -53,9 +57,9 @@ class AzureSecrets:
         secret-value
         """
         if secret_version is None:
-            secret_version = os.environ.get("SECRET_VERSION", "")
+            secret_version = None
 
-        key_bundle = self.client.get_secret(self.vault_base_url, secret_name, secret_version)
+        key_bundle = self.client.get_secret(secret_name, secret_version)
 
         return key_bundle.value
 
@@ -77,13 +81,10 @@ class AzureSecrets:
         """
         secrets = {}
 
-        key_bundle = self.client.get_secrets(self.vault_base_url)
-
         try:
             if env_names is None:
-                for secret_id in key_bundle:
-                    _secret_id = secret_id.as_dict()['id'].split('/').pop()
-                    secrets.update({_secret_id: self.get_secret(secret_name=_secret_id)})
+                for secret_id in self.client.list_properties_of_secrets():
+                    secrets.update({secret_id.name: self.get_secret(secret_name=secret_id.name)})
             else:
                 for secret_name in env_names:
                     secrets.update({secret_name: self.get_secret(secret_name=secret_name)})
@@ -120,17 +121,6 @@ class AzureSecrets:
         print("# Run this command to configure your shell:")
         print("# eval $(secrets env --shell bash)")
 
-
-def _auth_callback(server, resource, scope):
-    credentials = ServicePrincipalCredentials(
-        client_id=os.environ['AZURE_CLIENT_ID'],
-        secret=os.environ['AZURE_SECRET_KEY'],
-        tenant=os.environ['AZURE_TENANT_ID'],
-        resource=resource
-    )
-
-    token = credentials.token
-    return token['token_type'], token['access_token']
 
 
 def print_version(ctx, param, value):
