@@ -7,6 +7,11 @@ from azure.keyvault.secrets import SecretClient
 from azure.keyvault.secrets._shared._generated.v7_0.models import KeyVaultErrorException
 
 __version__ = '1.1'
+def print_version(ctx, param, value):
+    if not value or ctx.resilient_parsing:
+        return
+    click.echo(__version__)
+    ctx.exit()
 
 
 class AzureSecrets:
@@ -120,14 +125,6 @@ class AzureSecrets:
             print("export {0}={1}".format(key.replace('-', "_"), value))
         print("# Run this command to configure your shell:")
         print("# eval $(secrets env --shell bash)")
-
-
-
-def print_version(ctx, param, value):
-    if not value or ctx.resilient_parsing:
-        return
-    click.echo(__version__)
-    ctx.exit()
 
 
 @click.group()
