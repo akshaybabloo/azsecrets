@@ -124,7 +124,7 @@ class AzureSecrets:
         Prints environment variable for Bash
         """
         for key, value in self.get_secrets(secret_names).items():
-            print("export {0}={1}".format(key.replace('-', "_"), value))
+            print("export {0}='{1}'".format(key.replace('-', "_"), value))
         print("# Run this command to configure your shell:")
         print("# eval $(secrets env --shell bash)")
 
