@@ -1,6 +1,4 @@
 # Azure KeyVault Secrets as Environment Variable
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fakshaybabloo%2Fazsecrets.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fakshaybabloo%2Fazsecrets?ref=badge_shield)
-
 
 Get Azure KeyVault variables ans use them as environment variables.
 
@@ -45,7 +43,3 @@ print(AzureSecrets().get_secrets(["SECRET-NAME-1", "SECRET-NAME-1"]))
 ## Contributions
 
 All contributions are welcome.
-
-
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fakshaybabloo%2Fazsecrets.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fakshaybabloo%2Fazsecrets?ref=badge_large)
