@@ -6,7 +6,7 @@ from azure.identity import ClientSecretCredential
 from azure.keyvault.secrets import SecretClient
 from azure.keyvault.secrets._shared._generated.v7_0.models import KeyVaultErrorException
 
-__version__ = '2.0'
+__version__ = '2.0.1'
 
 
 def print_version(ctx, param, value):
